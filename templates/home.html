@@ -1,0 +1,46 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width,initial-scale=1.0"> 
+     <title>home</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+
+</head>
+
+
+<h3> Welcome to custom apparel Official website Where you will be able to design the apparel that you desire </h3>
+<body style="background-image: url({{ url_for('static', filename='images/124.jpeg') }});">
+
+    <div class="main">
+     <div class="navbar">
+       <div class="icon">
+        <div class="menu">
+          <h2 class="logo"> CUSTOM APPAREL
+          <ul>
+              <li><a href="#">HOME</a></li>
+              <li><a href="#">ABOUT</a></li>
+              <li><a href="#">CONTACT US</a></li>
+              <li><a href="#">HELP</a></li>
+              <li><a href="#">LOGOUT</a></li>
+              <form action="/">
+
+
+
+</form>
+
+          </ul>
+      </div>
+    
+<a href="{{url_for('login')}}">login Page</a><br>
+<a href="{{url_for('login')}}">Register Page</a><br>
+<div>
+
+
+
+</body>
+
+</html>  
