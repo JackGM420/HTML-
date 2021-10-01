@@ -1,26 +1,25 @@
 body{
     margin:0;
     padding: 0;
-    background-position: center;
-    background-size: cover;
-    height: 70vh;
-    border-radius: 35px;
-font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(images/123.JPG);
+    background-size:cover;
    
 }
 .register{
-      position: center;
-      width: 330px;
-      height:480px;
-      background: rgb(11, 18, 32);
-      color: rgb(153, 48, 22);
-      top: 50%;
-      left: 50%;
-      position:center;
-      transform: translate(60%,5%);
-      box-sizing: border-box;
-      padding: 20px 30px;
-      border-radius: 45px;
+    width: 28rem;
+    height:48rem;
+    background: rgb(11, 18, 32);
+    color: rgb(153, 48, 22);
+    top: 50%;
+    left: 50%;
+    position:center;
+    transform: translate(60%,5%);
+    box-sizing:border-box;
+    border-bottom: 10rem;
+
+    padding: 30px;
+
+    border-radius: 45px;
 }
 h4{
     margin: 0;
@@ -45,13 +44,22 @@ h4{
 }
 
 
-.register input[type=NAME]
+.register input[type=EMAIL]
 {
     width: 100%;
     margin-bottom: 15px;
-    border-radius: 6px;
+    border-radius:none;
 }
-
+.register input[type="email"],input[ id="inputEmail"]
+{
+    border: none;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    outline: none;
+    height: 20px;
+    font-size: 14px;
+}
 .register input[type=USERNAME]
 {
     width: 100%;

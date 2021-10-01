@@ -11,26 +11,42 @@
 
 </head>
 
-<body style="background-image: url({{ url_for('static', filename='images/123.JPG') }});">
-          
+
 
 
 </style>
     <div class="register">
          <h4> welcome </h4
-   
+   </div>
 <div>
-   <form method="post">
-       <p>NAME:</p>
-       <input type="text"name="one" id="name">
+   <form method="post" action='/register'>
+       <p>names:</p>
+       <input type="text" id="name "placeholder="Enter your names"required autofocus>
+
+       <p>Email</p>
+       <input type="email" id="inputEmail" class ="form-control" placeholder="Enter a valid email address" required >
+        <p>number</p>
+       <input type="number" id="inputnumber" class ="form-control" placeholder="Enter a valid phone number" required autofocus>
+        
        <p>Username:</p>
-       <input type="text" name= ""placeholder="Enter Username">
+       <input type="text" name= ""placeholder="Enter Username"required autofocus>
+       
+   
        <p>Password</p>
-       <input type="password" name=""placeholder="Enter password"<br><br>
+       <input type="password" id="password"placeholder="Enter password"
+       <p>Confirm Password</p>
+
+       <input type="password" id="ConfirmPassword"placeholder="Confirm password"<br>
        <input type="submit" name=""value="CREATE"<br><br>
-        <button type="submit">EXIT</button>
+       
+       
+  
+ <a href="{{url_for('login')}}">Already have an account ?log In</a> <br>
+
+<a href="{{url_for('home')}}">Home Page </a>
+</div>
    </form>
- <a href="{{url_for('login')}}">Already have an account ?log In</a>
+
 </body>
 
 </html>   

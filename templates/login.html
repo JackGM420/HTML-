@@ -3,8 +3,8 @@
 <head>
      <title>LOGIN FORM</title>
      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<link rel="icon"  href="/favicon.ico"/>
-<link rel="icon" type="image/png" href="/favicon.png"/>
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
 </head>
 
 
@@ -14,17 +14,22 @@
 
 </style>
     <div class="login">
-         <h4> welcome </h4>
-         <form>
-             <p>Username</p>
-             <input type="text" name= ""placeholder="Enter Username">
-             <p>Password</p>
-             <input type="password" name=""placeholder="Enter password"<br><br>
-             <input type="submit" name=""value="login"<br><br>
-             <a href="{{url_for('register')}}">Don't have an account?Sign up</a><br>
-              <button type="submit">LOGOUT</button>
-             </form>
+         <h4><i class="fa fa-user"></i> welcome </h4>
+   
 
+     
+         <form action="/login" method="post">
+             <p>Username</p>
+             <input type="text" name=""placeholder="Enter Username" required autofocus>
+             <p>Password</p>
+        
+             <input type="password" name=""placeholder="Enter password"><br><br>
+             <input type="submit" class="btn btn-primary" value="login"><br><br>
+             </form>
+          <a href="{{url_for('register')}}">Don't have an account?Sign up</a><br>
+          <a href="{{url_for('home')}}">return to home Page </a><br>
+          <a href ="{{url_for('register')}}">Forgot password</a>
+     </div>
 
 
 </body>

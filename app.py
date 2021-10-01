@@ -1,86 +1,53 @@
 
 from enum import unique
 from os import name
-from flask import Flask,render_template,url_for
+import re
+from MySQLdb import cursors
+import MySQLdb
+from MySQLdb.cursors import Cursor
+from flask import Flask,render_template,url_for,redirect,request
+from flask.helpers import flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField
+from werkzeug.local import F
+from wtforms import StringField,PasswordField,SubmitField, form
 from wtforms import validators
-from wtforms.validators import Length, ValidationError, input_required
-
+from wtforms.fields.core import BooleanField
+from wtforms.validators import Email, InputRequired, Length, ValidationError, input_required,email_validator
+from flask_bootstrap import Bootstrap
+from flask_mysqldb import MySQL
+import yaml
+ 
 app=Flask(__name__)
 
-app.config['SQLALCHEMY_DARABASE_URI']='sqlite:///database.db'
+
+db=SQLAlchemy()
+app.config['SQLALCHEMY_DARABASE_URI']='sqlite:///database/Custom.db'
 app.config['SECRET_KEY']="random string"
 
-
-db=SQLAlchemy(app)     
-class Customer(db.Model,UserMixin):
-    __tablename__='Customer'
-    customer_id=db.Column(db.Integer,primary_key=True)
-    name=db.Column(db.String(100))
-    username=db.Column(db.String(30),nullable=False,unique=True)
-    email=db.Column(db.String(100),nullable=True,unique=True)
-    password=db.Column(db.String(50),nullable=False)
-    number=db.Column(db.Integer,nullable=False)
-    addr=db.Column(db.String(200))
-    city=db.Column(db.String(200))
-
-class tailor(db.Model,UserMixin):
-    __tablename__='tailor'
-    tailor_id=db.Column(db.Integer,primary_key=True)
-    name=db.Column(db.String(100))
-    username=db.Column(db.String(30),nullable=False,unique=True)
-    email=db.Column(db.String(100),nullable=True,unique=True)
-    password=db.Column(db.String(50),nullable=False)
-    number=db.Column(db.Integer,nullable=False)
-    addr=db.Column(db.String(200))
-    city=db.Column(db.String(200))
-    skills=db.Column(db.String(400))
-    customer_id=db.Column(db.Integer,foreign_key=True)    
-
-
-
-class Registerform(FlaskForm):
-    username=StringField(validators=[input_required(),Length(min=4,max=20)],render_kw={"placeholder": "username"})
-    password=PasswordField(validators=[input_required(),Length(min=4,max=20)],render_kw={"placeholde":"password"})
-    submit=SubmitField("register")
-
-    def validate(self, username):
-        existing_user_name=Customer.query.filter_by(username=username.data).first()#Checks if username is common
-        if existing_user_name:
-            raise ValidationError("This username alreay exists please choose another one")
-class loginform(FlaskForm):
-    username=StringField(validators=[input_required(),Length(min=4,max=20)],render_kw={"placeholder": "username"})
-    password=PasswordField(validators=[input_required(),Length(min=4,max=20)],render_kw={"placeholde":"password"})
-    submit=SubmitField("register")
-
-
-def __init__(self,name,city,addr,email,username):
-   return Customer('{self.name}','{self.username}')
 @app.route('/')
-
 def home():
     return render_template('home.html')
-
-@app.route('/login')
-
+@app.route('/login',methods=['GET','POST'])
 def login():
-    return render_template('login.html')
+    if request.method=='POST':
+        User =request.form
+        return redirect(url_for("home",usr=home))
 
-
-@app.route('/register')
-
-def register():
-    return render_template('register.html')
-
-db.init_app(app)
-@app.before_first_request
-def create_table():
-    db.create_all()
     
+    return render_template('login.html')
+@app.route('/register',methods=['GET', 'POST'])
+def register():
+   if request.method=='POST':
+      
+      return 'success'
+      
+   
+   return render_template('register.html')
+
 
 
 if __name__=="__main__":
     app.run(debug=True)
+    
